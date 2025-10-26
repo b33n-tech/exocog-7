@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Outil Fusion Stack 1 & 2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Outil de gestion & traitement de tâches</h1>
+    <label for="llmSelect">Choisir LLM :</label>
+    <select id="llmSelect">
+      <option value="https://chat.openai.com/">ChatGPT</option>
+      <option value="https://www.perplexity.ai/">Perplexity</option>
+      <option value="https://claude.ai/">Claude</option>
+      <option value="https://mistral.ai/">Mistral</option>
+    </select>
+  </header>
+
+  <main>
+    <!-- Stack 1 -->
+    <section id="stack1">
+      <h2>📋 Input tâches & commentaires</h2>
+      <div class="task-input-row">
+        <input type="text" id="taskInput" placeholder="Nouvelle tâche…">
+        <button id="addBtn">Ajouter</button>
+      </div>
+      <ul id="tasksContainer"></ul>
+      <div class="buttons-row">
+        <button id="clearBtn">🧹 Tout nettoyer</button>
+        <button id="archiveBtn">📂 Archiver JSON</button>
+      </div>
+
+      <div class="prompt-buttons" id="promptsContainer">
+        <h3>📤 Prompts</h3>
+        <!-- Les boutons seront injectés via JS -->
+      </div>
+
+      <div class="json-paste-section">
+        <h3>📥 Coller JSON pour traitement</h3>
+        <textarea id="pasteJson" placeholder="Collez ici le JSON du LLM…"></textarea>
+        <button id="pushToStack2Btn">Envoyer ce batch → Modules</button>
+      </div>
+    </section>
+
+    <!-- Stack 2 -->
+    <section id="stack2">
+      <h2>🧩 Modules pour action</h2>
+
+      <div class="module" id="jalonsModule">
+        <h3>Jalons & Sous-actions</h3>
+        <ul id="jalonsList"></ul>
+      </div>
+
+      <div class="module" id="messagesModule">
+        <h3>Mails & Messages</h3>
+        <table>
+          <thead>
+            <tr><th>✓</th><th>Destinataire</th><th>Sujet</th><th>Texte</th><th>Note</th></tr>
+          </thead>
+          <tbody id="messagesTable"></tbody>
+        </table>
+        <div>
+          <select id="mailPromptSelect">
+            <option value="1">Rédige email professionnel</option>
+            <option value="2">Rédige email amical</option>
+          </select>
+          <button id="sendMessagesLLMBtn">Envoyer au LLM</button>
+        </div>
+      </div>
+
+      <div class="module" id="livrablesModule">
+        <h3>Livrables</h3>
+        <ul id="livrablesList"></ul>
+        <div>
+          <select id="livrablePromptSelect">
+            <option value="1">Plan détaillé</option>
+            <option value="2">Résumé exécutif</option>
+            <option value="3">Checklist rapide</option>
+          </select>
+          <button id="sendLivrablesLLMBtn">Envoyer au LLM</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
